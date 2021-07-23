@@ -36,4 +36,7 @@ public class NovaPropostaRequest {
         return new Proposta(documento, email, nome, endereco, salario);
     }
 
+    public String getDocumento() {
+        return documento;
+    }
 }
