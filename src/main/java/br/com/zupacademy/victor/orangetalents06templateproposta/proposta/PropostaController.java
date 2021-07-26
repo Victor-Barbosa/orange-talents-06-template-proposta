@@ -68,4 +68,7 @@ public class PropostaController {
             return ResponseEntity.internalServerError().body("Erro inesperado, tente novamente!");
         }
     }
+
+
+
 }

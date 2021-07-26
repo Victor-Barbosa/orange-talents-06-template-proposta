@@ -1,5 +1,6 @@
 package br.com.zupacademy.victor.orangetalents06templateproposta.proposta;
 
+import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao.Cartao;
 import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.consultadocumento.ResultadoAnalise;
 
 import javax.persistence.*;
@@ -23,7 +24,8 @@ public class Proposta {
     private BigDecimal salario;
     @Enumerated(EnumType.STRING)
     private ResultadoAnalise resultadoAnalise = ResultadoAnalise.NAO_ELEGIVEL;
-
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private Cartao cartao;
 
     public Proposta(String documento, String email, String nome, String endereco, BigDecimal salario) {
         this.documento = documento;
@@ -56,5 +58,13 @@ public class Proposta {
 
     public ResultadoAnalise getResultadoAnalise() {
         return resultadoAnalise;
+    }
+
+    public Cartao getCartao() {
+        return cartao;
+    }
+
+    public void setCartao(Cartao cartao) {
+        this.cartao = cartao;
     }
 }
