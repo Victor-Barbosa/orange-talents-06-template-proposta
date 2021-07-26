@@ -53,4 +53,8 @@ public class Proposta {
     public void setResultadoAnalise(ResultadoAnalise resultadoAnalise) {
         this.resultadoAnalise = resultadoAnalise;
     }
+
+    public ResultadoAnalise getResultadoAnalise() {
+        return resultadoAnalise;
+    }
 }

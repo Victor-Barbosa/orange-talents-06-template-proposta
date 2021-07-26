@@ -5,17 +5,14 @@ import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.consult
 import feign.FeignException.FeignClientException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
-import java.net.URI;
 
 import static br.com.zupacademy.victor.orangetalents06templateproposta.proposta.consultadocumento.ResultadoAnalise.ELEGIVEL;
 import static br.com.zupacademy.victor.orangetalents06templateproposta.proposta.consultadocumento.ResultadoAnalise.SEM_RESTRICAO;
@@ -34,15 +31,16 @@ public class PropostaController {
         this.consultaRestricao = consultaRestricao;
     }
 
+
     @PostMapping
     public ResponseEntity<String> criaProposta(@Valid @RequestBody NovaPropostaRequest request, UriComponentsBuilder builder) {
         logger.info("PropostaController.criaProposta - Iniciando criação de proposta " + request);
         if (propostaRepository.existsByDocumento(request.getDocumento())) {
-            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Já existe proposta para esse documento!");
+            return ResponseEntity.unprocessableEntity().body("Já existe proposta para esse documento!");
         }
         var novaProposta = request.toModel();
         propostaRepository.save(novaProposta);
-        var uri = builder.path("ConsultaProposta/{id}").build(novaProposta.getId());
+        var uri = builder.path("/api/v1/proposta/{id}").build(novaProposta.getId());
 
         try {
             var analisaPropostaRequest = new AnalisaPropostaRequest(novaProposta.getId().toString(),
@@ -65,7 +63,9 @@ public class PropostaController {
         } catch (Exception ex) {
             logger.info(ex.getMessage());
 
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro inesperado, tente novamente!");
+            propostaRepository.delete(novaProposta);
+
+            return ResponseEntity.internalServerError().body("Erro inesperado, tente novamente!");
         }
     }
 }
