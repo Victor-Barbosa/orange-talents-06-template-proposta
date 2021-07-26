@@ -67,4 +67,16 @@ public class Proposta {
     public void setCartao(Cartao cartao) {
         this.cartao = cartao;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public BigDecimal getSalario() {
+        return salario;
+    }
 }

@@ -5,14 +5,15 @@ import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.consult
 import feign.FeignException.FeignClientException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
+
+import java.util.Optional;
 
 import static br.com.zupacademy.victor.orangetalents06templateproposta.proposta.consultadocumento.ResultadoAnalise.ELEGIVEL;
 import static br.com.zupacademy.victor.orangetalents06templateproposta.proposta.consultadocumento.ResultadoAnalise.SEM_RESTRICAO;
@@ -69,6 +70,15 @@ public class PropostaController {
         }
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<DadosPropostaDto> buscaStatusProposta(@PathVariable("id") Long idProposta) {
 
+        Optional<Proposta> buscaPropostaPorId = propostaRepository.findById(idProposta);
 
+        if (buscaPropostaPorId.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe proposta para esse id!");
+        }
+
+        return ResponseEntity.ok(new DadosPropostaDto(buscaPropostaPorId.get()));
+    }
 }
