@@ -5,11 +5,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "cartao", url = "http://localhost:8888/api")
+@FeignClient(name = "cartao", url = "#{'${api.cards.url}'}")
 public interface CartaoClient {
 
     @Transactional
-    @PostMapping(value = "/cartoes")
+    @PostMapping
     Cartao criaCartaoPropostaElegivel(@RequestBody CriaCartaoRequest criaCartaoRequest);
 
 }

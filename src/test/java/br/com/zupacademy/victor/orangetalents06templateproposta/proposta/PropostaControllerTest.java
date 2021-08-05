@@ -18,6 +18,7 @@ import static br.com.zupacademy.victor.orangetalents06templateproposta.proposta.
 import static br.com.zupacademy.victor.orangetalents06templateproposta.utils.Factory.*;
 import static br.com.zupacademy.victor.orangetalents06templateproposta.utils.Utils.toJson;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
@@ -75,7 +76,7 @@ class PropostaControllerTest {
         var analisaPropostaRequest = buildAnalisaPropostaRequest(DOCUMENTO_ELEGIVEL);
         var analisaPropostaResponse = buildAnalisaPropostaResponse(DOCUMENTO_ELEGIVEL, SEM_RESTRICAO);
 
-        when(consultaRestricao.avaliaProposta(analisaPropostaRequest)).thenReturn(analisaPropostaResponse);
+        when(consultaRestricao.avaliaProposta(any())).thenReturn(analisaPropostaResponse);
 
         var response = mockMvc.perform(post(URI)
                 .contentType(APPLICATION_JSON)
@@ -99,7 +100,7 @@ class PropostaControllerTest {
         var novaPropostaRequest = buildNovaPropostaRequest(DOCUMENTO_NAO_ELEGIVEL);
         var analisaPropostaRequest = buildAnalisaPropostaRequest(DOCUMENTO_NAO_ELEGIVEL);
 
-        when(consultaRestricao.avaliaProposta(analisaPropostaRequest))
+        when(consultaRestricao.avaliaProposta(any()))
                 .thenThrow(mock(FeignException.FeignClientException.class));
 
         var response = mockMvc.perform(post(URI)

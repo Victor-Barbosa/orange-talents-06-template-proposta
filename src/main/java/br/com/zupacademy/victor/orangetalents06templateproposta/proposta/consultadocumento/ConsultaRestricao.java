@@ -5,10 +5,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(value = "financeiro", url = "http://localhost:9999/api")
+@FeignClient(value = "financeiro", url = "#{'${api.solicitations.url}'}")
 public interface ConsultaRestricao {
 
     @Transactional
-    @PostMapping(value = "/solicitacao")
+    @PostMapping
     AnalisaPropostaResponse avaliaProposta(@RequestBody AnalisaPropostaRequest analisaPropostaRequest);
 }
