@@ -8,8 +8,8 @@ import java.util.List;
 public class Cartao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idCartao;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idCartao;
     private String id;
     private LocalDateTime emitidoEm = LocalDateTime.now();
     private String titular;
@@ -47,7 +47,7 @@ public class Cartao {
 
     }
 
-    public Integer getIdCartao() {
+    public Long getIdCartao() {
         return idCartao;
     }
 
