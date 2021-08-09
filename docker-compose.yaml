@@ -65,6 +65,8 @@ services:
       DATABASE_PASSWORD: root
       API_SOLICITATION_URL: http://analise:9999/api/solicitacao
       API_CARDS_URL: http://contas:8888/api/cartoes
+      KEYCLOAK_ISSUER_URI: http://localhost:18080/auth/realms/nosso-cartao
+      KEYCLOAK_JWKS_URI: http://localhost:18080/auth/realms/nosso-cartao/protocol/openid-connect/certs
     networks:
       - propostas-network
     depends_on:

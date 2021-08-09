@@ -1,5 +1,8 @@
 package br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao;
 
+import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao.bloqueio.Bloqueio;
+import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao.bloqueio.StatusCartao;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,6 +16,8 @@ public class Cartao {
     private String id;
     private LocalDateTime emitidoEm = LocalDateTime.now();
     private String titular;
+    @Enumerated(EnumType.STRING)
+    private StatusCartao statusCartao = StatusCartao.ATIVO;
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Bloqueio> bloqueios;
     @OneToMany(cascade = CascadeType.PERSIST)
@@ -93,5 +98,14 @@ public class Cartao {
 
     public Integer getIdProposta() {
         return idProposta;
+    }
+
+    public StatusCartao getStatusCartao() {
+        return statusCartao;
+    }
+
+    public Cartao setStatusCartao(StatusCartao statusCartao) {
+        this.statusCartao = statusCartao;
+        return null;
     }
 }

@@ -2,6 +2,7 @@ package br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao
 
 import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.Proposta;
 import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.PropostaRepository;
+import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao.bloqueio.StatusCartao;
 import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.consultadocumento.ResultadoAnalise;
 import feign.RetryableException;
 import org.hibernate.annotations.common.util.impl.LoggerFactory;
@@ -30,7 +31,7 @@ public class CriaCartaoPropostaElegivel {
         this.propostaRepository = propostaRepository;
     }
 
-    @Scheduled(fixedDelay = 90000)
+    @Scheduled(fixedDelay = 20000)
     public ResponseEntity<String> CriaCartaoPropostaElegivel() {
         logger.info("Verifica proposta, se for elegivel salva cartao e vincula a proposta!");
 
@@ -43,6 +44,7 @@ public class CriaCartaoPropostaElegivel {
                             new CriaCartaoRequest(proposta.getDocumento(), proposta.getNome(), proposta.getId().toString());
                     Cartao novoCartao = cartaoClient.criaCartaoPropostaElegivel(criaCartaoRequest);
                     proposta.setCartao(novoCartao);
+                    novoCartao.setStatusCartao(StatusCartao.ATIVO);
                     propostaRepository.save(proposta);
 
                     logger.info("Cartao criado e salvo " + proposta);
