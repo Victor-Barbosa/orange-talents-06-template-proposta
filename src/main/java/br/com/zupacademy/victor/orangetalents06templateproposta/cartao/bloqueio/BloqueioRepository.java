@@ -1,4 +1,4 @@
-package br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao.bloqueio;
+package br.com.zupacademy.victor.orangetalents06templateproposta.cartao.bloqueio;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

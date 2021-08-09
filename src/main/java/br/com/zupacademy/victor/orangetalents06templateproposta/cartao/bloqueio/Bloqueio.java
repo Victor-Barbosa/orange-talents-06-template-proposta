@@ -1,6 +1,6 @@
-package br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao.bloqueio;
+package br.com.zupacademy.victor.orangetalents06templateproposta.cartao.bloqueio;
 
-import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao.Cartao;
+import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.Cartao;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

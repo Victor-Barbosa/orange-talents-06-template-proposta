@@ -1,7 +1,7 @@
 package br.com.zupacademy.victor.orangetalents06templateproposta.biometria;
 
 import br.com.zupacademy.victor.orangetalents06templateproposta.compartilhado.IsValidBase64;
-import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao.Cartao;
+import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.Cartao;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import javax.validation.constraints.NotBlank;

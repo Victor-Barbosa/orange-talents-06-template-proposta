@@ -1,6 +1,6 @@
 package br.com.zupacademy.victor.orangetalents06templateproposta.proposta;
 
-import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao.Cartao;
+import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.Cartao;
 import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.consultadocumento.ResultadoAnalise;
 
 import javax.persistence.*;

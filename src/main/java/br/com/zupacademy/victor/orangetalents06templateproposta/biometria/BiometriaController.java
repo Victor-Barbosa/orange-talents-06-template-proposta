@@ -1,7 +1,7 @@
 package br.com.zupacademy.victor.orangetalents06templateproposta.biometria;
 
 import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.PropostaController;
-import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao.CartaoRepository;
+import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.CartaoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

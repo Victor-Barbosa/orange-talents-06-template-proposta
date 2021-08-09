@@ -1,8 +1,8 @@
-package br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao;
+package br.com.zupacademy.victor.orangetalents06templateproposta.cartao;
 
 import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.Proposta;
 import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.PropostaRepository;
-import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao.bloqueio.StatusCartao;
+import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.bloqueio.StatusCartao;
 import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.consultadocumento.ResultadoAnalise;
 import feign.RetryableException;
 import org.hibernate.annotations.common.util.impl.LoggerFactory;

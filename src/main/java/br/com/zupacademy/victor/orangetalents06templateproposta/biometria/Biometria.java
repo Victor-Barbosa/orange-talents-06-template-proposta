@@ -1,6 +1,6 @@
 package br.com.zupacademy.victor.orangetalents06templateproposta.biometria;
 
-import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao.Cartao;
+import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.Cartao;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

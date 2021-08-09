@@ -1,4 +1,4 @@
-package br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao;
+package br.com.zupacademy.victor.orangetalents06templateproposta.cartao;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

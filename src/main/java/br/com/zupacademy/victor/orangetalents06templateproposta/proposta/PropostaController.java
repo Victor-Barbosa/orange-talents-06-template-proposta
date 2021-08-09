@@ -73,7 +73,7 @@ public class PropostaController {
     @GetMapping("/{id}")
     public ResponseEntity<DadosPropostaDto> buscaStatusProposta(@PathVariable("id") Long idProposta) {
 
-        Optional<Proposta> buscaPropostaPorId = propostaRepository.findById(idProposta);
+        var buscaPropostaPorId = propostaRepository.findById(idProposta);
 
         if (buscaPropostaPorId.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe proposta para esse id!");
