@@ -14,6 +14,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests(authorizeRequests ->
                         authorizeRequests
                                 .antMatchers(HttpMethod.GET, "/api/proposta/**").hasAuthority("SCOPE_proposta:read")
+                                .antMatchers(HttpMethod.GET, "/actuator/prometheus/**").permitAll()
                                 .antMatchers(HttpMethod.POST, "/api/proposta*").hasAuthority("SCOPE_proposta:write")
                                 .antMatchers(HttpMethod.POST, "/api/biometria/**").hasAuthority("SCOPE_biometria:write")
                                 .antMatchers(HttpMethod.POST, "/api/bloqueio/**").hasAuthority("SCOPE_bloqueio:write")
