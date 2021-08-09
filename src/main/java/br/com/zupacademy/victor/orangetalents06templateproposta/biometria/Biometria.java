@@ -3,7 +3,6 @@ package br.com.zupacademy.victor.orangetalents06templateproposta.biometria;
 import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.cartao.Cartao;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 

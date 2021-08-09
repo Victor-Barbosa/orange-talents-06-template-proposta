@@ -69,6 +69,7 @@ services:
       - propostas-network
     depends_on:
       - postgres
+      - keycloak
 
   keycloak:
     image: jboss/keycloak
