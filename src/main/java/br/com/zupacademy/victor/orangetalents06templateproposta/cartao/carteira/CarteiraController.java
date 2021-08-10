@@ -14,6 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.validation.Valid;
 
 import static br.com.zupacademy.victor.orangetalents06templateproposta.cartao.carteira.CarteiraResultado.FALHA;
+import static br.com.zupacademy.victor.orangetalents06templateproposta.cartao.carteira.SistemaCarteira.PAYPAL;
 
 @RestController
 @RequestMapping("/api/v1/carteira")
@@ -38,7 +39,8 @@ public class CarteiraController {
         var cartao = cartaoRepository.findById(idCartao)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe cartão com esse id!"));
 
-        if (carteiraRepository.existsByCartao_IdCartaoAndCarteira(idCartao, associaCarteiraRequest.getCarteira())){
+
+        if (carteiraRepository.existsByCartao_IdCartaoAndCarteira(idCartao,associaCarteiraRequest.getCarteira())){
             throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, "Esse cartão já foi associado a essa carteira!");
         }
 
@@ -67,4 +69,5 @@ public class CarteiraController {
         }
 
     }
+
 }
