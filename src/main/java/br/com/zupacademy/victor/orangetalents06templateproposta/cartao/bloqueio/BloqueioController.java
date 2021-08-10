@@ -1,8 +1,6 @@
 package br.com.zupacademy.victor.orangetalents06templateproposta.cartao.bloqueio;
 
 import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.CartaoRepository;
-import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.PropostaController;
-import feign.FeignException;
 import feign.FeignException.FeignClientException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +23,7 @@ import static br.com.zupacademy.victor.orangetalents06templateproposta.cartao.bl
 @RequestMapping("/api/v1/bloqueio")
 public class BloqueioController {
 
-    Logger logger = LoggerFactory.getLogger(PropostaController.class);
+    Logger logger = LoggerFactory.getLogger(BloqueioController.class);
 
     private CartaoRepository cartaoRepository;
     private BloqueioRepository bloqueioRepository;

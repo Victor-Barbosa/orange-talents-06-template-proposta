@@ -1,6 +1,5 @@
 package br.com.zupacademy.victor.orangetalents06templateproposta.biometria;
 
-import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.PropostaController;
 import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.CartaoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +15,7 @@ import javax.validation.Valid;
 @RequestMapping("/api/v1/biometria")
 public class BiometriaController {
 
-    Logger logger = LoggerFactory.getLogger(PropostaController.class);
+    Logger logger = LoggerFactory.getLogger(BiometriaController.class);
 
     private CartaoRepository cartaoRepository;
     private BiometriaRepository biometriaRepository;

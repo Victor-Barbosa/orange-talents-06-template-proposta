@@ -13,14 +13,13 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 
-import java.util.Optional;
-
 import static br.com.zupacademy.victor.orangetalents06templateproposta.proposta.consultadocumento.ResultadoAnalise.ELEGIVEL;
 import static br.com.zupacademy.victor.orangetalents06templateproposta.proposta.consultadocumento.ResultadoAnalise.SEM_RESTRICAO;
 
 @RestController
 @RequestMapping("/api/v1/proposta")
 public class PropostaController {
+
 
     Logger logger = LoggerFactory.getLogger(PropostaController.class);
 

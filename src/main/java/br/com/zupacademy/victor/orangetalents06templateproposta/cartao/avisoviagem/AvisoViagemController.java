@@ -1,7 +1,6 @@
 package br.com.zupacademy.victor.orangetalents06templateproposta.cartao.avisoviagem;
 
 import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.CartaoRepository;
-import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.PropostaController;
 import feign.FeignException.FeignClientException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +18,7 @@ import static br.com.zupacademy.victor.orangetalents06templateproposta.cartao.av
 @RestController
 @RequestMapping("/api/v1/viagem")
 public class AvisoViagemController {
-    Logger logger = LoggerFactory.getLogger(PropostaController.class);
+    Logger logger = LoggerFactory.getLogger(AvisoViagemController.class);
 
     private CartaoRepository cartaoRepository;
     private AvisoViagemRepository avisoViagemRepository;

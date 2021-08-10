@@ -1,7 +1,6 @@
 package br.com.zupacademy.victor.orangetalents06templateproposta.cartao.carteira;
 
 import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.CartaoRepository;
-import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.PropostaController;
 import feign.FeignException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,13 +13,12 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.validation.Valid;
 
 import static br.com.zupacademy.victor.orangetalents06templateproposta.cartao.carteira.CarteiraResultado.FALHA;
-import static br.com.zupacademy.victor.orangetalents06templateproposta.cartao.carteira.SistemaCarteira.PAYPAL;
 
 @RestController
 @RequestMapping("/api/v1/carteira")
 public class CarteiraController {
 
-    Logger logger = LoggerFactory.getLogger(PropostaController.class);
+    Logger logger = LoggerFactory.getLogger(CarteiraController.class);
 
     private CartaoRepository cartaoRepository;
     private CarteiraRepository carteiraRepository;
