@@ -54,7 +54,7 @@ public class BloqueioController {
         try {
             var notificaBloqueioResponse = consultaBloqueio.notifica(cartao.getId(), Map.of("sistemaResponsavel", "proposta-api-victor"));
 
-            if (FALHA.equals(notificaBloqueioResponse.getResultado())){
+            if (FALHA.equals(notificaBloqueioResponse.getResultado())) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
             }
             var novoBloqueio = cartaoRequest.toModel(ip, userAgent, cartao.setStatusCartao(notificaBloqueioResponse.getResultado()));
@@ -73,12 +73,5 @@ public class BloqueioController {
 
             return ResponseEntity.internalServerError().body("Erro inesperado, tente novamente!");
         }
-
-
-
-
-
-
-
     }
 }

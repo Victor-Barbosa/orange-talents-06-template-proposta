@@ -3,6 +3,7 @@ package br.com.zupacademy.victor.orangetalents06templateproposta.cartao;
 import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.avisoviagem.Avisos;
 import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.bloqueio.Bloqueio;
 import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.bloqueio.StatusCartao;
+import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.carteira.Carteira;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

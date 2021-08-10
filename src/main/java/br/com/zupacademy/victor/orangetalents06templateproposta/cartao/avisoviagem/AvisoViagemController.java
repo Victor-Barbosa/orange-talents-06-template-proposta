@@ -57,7 +57,7 @@ public class AvisoViagemController {
         } catch (FeignClientException ex) {
             logger.info(ex.getMessage());
 
-            return ResponseEntity.unprocessableEntity().body("Falha ao Criado aviso viagem!");
+            return ResponseEntity.unprocessableEntity().body("Falha ao Criar aviso viagem!");
         } catch (Exception ex) {
             logger.info(ex.getMessage());
 
