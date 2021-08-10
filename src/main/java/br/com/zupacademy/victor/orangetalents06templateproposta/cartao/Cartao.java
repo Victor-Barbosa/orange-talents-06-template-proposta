@@ -1,5 +1,6 @@
 package br.com.zupacademy.victor.orangetalents06templateproposta.cartao;
 
+import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.avisoviagem.AvisoViagem;
 import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.bloqueio.Bloqueio;
 import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.bloqueio.StatusCartao;
 
@@ -21,7 +22,7 @@ public class Cartao {
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Bloqueio> bloqueios;
     @OneToMany(cascade = CascadeType.PERSIST)
-    private List<Aviso> avisos;
+    private List<AvisoViagem> avisoViagems;
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Carteira> carteiras;
     @OneToMany(cascade = CascadeType.PERSIST)
@@ -32,13 +33,13 @@ public class Cartao {
     private Vencimento vencimento;
     private Integer idProposta;
 
-    public Cartao(String id, LocalDateTime emitidoEm, String titular, List<Bloqueio> bloqueios, List<Aviso> avisos,
+    public Cartao(String id, LocalDateTime emitidoEm, String titular, List<Bloqueio> bloqueios, List<AvisoViagem> avisoViagems,
                   List<Carteira> carteiras, List<Parcela> parcelas, int limite, String renegociacao, Vencimento vencimento, Integer idProposta) {
         this.id = id;
         this.emitidoEm = emitidoEm;
         this.titular = titular;
         this.bloqueios = bloqueios;
-        this.avisos = avisos;
+        this.avisoViagems = avisoViagems;
         this.carteiras = carteiras;
         this.parcelas = parcelas;
         this.limite = limite;
@@ -72,8 +73,8 @@ public class Cartao {
         return bloqueios;
     }
 
-    public List<Aviso> getAvisos() {
-        return avisos;
+    public List<AvisoViagem> getAvisos() {
+        return avisoViagems;
     }
 
     public List<Carteira> getCarteiras() {
