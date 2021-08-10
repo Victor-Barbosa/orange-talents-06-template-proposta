@@ -2,6 +2,8 @@ package br.com.zupacademy.victor.orangetalents06templateproposta.cartao.bloqueio
 
 import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.CartaoRepository;
 import br.com.zupacademy.victor.orangetalents06templateproposta.proposta.PropostaController;
+import feign.FeignException;
+import feign.FeignException.FeignClientException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -49,18 +51,34 @@ public class BloqueioController {
         var ip = httpServletRequest.getRemoteAddr();
         var userAgent = httpServletRequest.getHeader(HttpHeaders.USER_AGENT);
 
-        var notificaBloqueioResponse = consultaBloqueio.notifica(cartao.getId(), Map.of("sistemaResponsavel", "proposta-api-victor"));
+        try {
+            var notificaBloqueioResponse = consultaBloqueio.notifica(cartao.getId(), Map.of("sistemaResponsavel", "proposta-api-victor"));
 
-        if (FALHA.equals(notificaBloqueioResponse.getResultado())){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            if (FALHA.equals(notificaBloqueioResponse.getResultado())){
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
+            var novoBloqueio = cartaoRequest.toModel(ip, userAgent, cartao.setStatusCartao(notificaBloqueioResponse.getResultado()));
+
+            bloqueioRepository.save(novoBloqueio);
+
+            logger.info("Finalizando bloqueio de cartão" + novoBloqueio);
+
+            return ResponseEntity.ok().body("Cartão bloqueado!");
+        } catch (FeignClientException ex) {
+            logger.info(ex.getMessage());
+
+            return ResponseEntity.unprocessableEntity().body("Falha ao bloquear cartão!");
+        } catch (Exception ex) {
+            logger.info(ex.getMessage());
+
+            return ResponseEntity.internalServerError().body("Erro inesperado, tente novamente!");
         }
 
-        var novoBloqueio = cartaoRequest.toModel(ip, userAgent, cartao.setStatusCartao(notificaBloqueioResponse.getResultado()));
 
-        bloqueioRepository.save(novoBloqueio);
 
-        logger.info("Finalizando bloqueio de cartão" + novoBloqueio);
 
-        return ResponseEntity.ok().body("Cartão bloqueado!");
+
+
+
     }
 }

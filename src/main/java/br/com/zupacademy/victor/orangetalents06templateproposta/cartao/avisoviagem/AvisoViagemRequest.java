@@ -1,6 +1,7 @@
 package br.com.zupacademy.victor.orangetalents06templateproposta.cartao.avisoviagem;
 
 import br.com.zupacademy.victor.orangetalents06templateproposta.cartao.Cartao;
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
@@ -13,14 +14,23 @@ public class AvisoViagemRequest {
     private String destino;
     @NotNull
     @Future
-    private LocalDate terminoViagem;
+    private LocalDate validoAte;
 
-    public AvisoViagemRequest(String destino, LocalDate terminoViagem) {
+    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
+    public AvisoViagemRequest(String destino, LocalDate validoAte) {
         this.destino = destino;
-        this.terminoViagem = terminoViagem;
+        this.validoAte = validoAte;
     }
 
-    public AvisoViagem toModel(Cartao cartao, String ip, String userAgent) {
-        return new AvisoViagem(cartao, ip, userAgent, destino, terminoViagem);
+    public String getDestino() {
+        return destino;
+    }
+
+    public LocalDate getValidoAte() {
+        return validoAte;
+    }
+
+    public Avisos toModel(Cartao cartao, String ip, String userAgent) {
+        return new Avisos(cartao, ip, userAgent, this.destino, this.validoAte);
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Map;
 
-@FeignClient(value = "bloqueio", url = "#{'${api.cards.url}'}")
+@FeignClient(value = "aviso", url = "#{'${api.cards.url}'}")
 public interface ConsultaBloqueio {
 
     @Transactional

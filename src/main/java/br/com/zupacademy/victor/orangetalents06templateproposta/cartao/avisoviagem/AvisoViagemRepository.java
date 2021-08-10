@@ -2,5 +2,5 @@ package br.com.zupacademy.victor.orangetalents06templateproposta.cartao.avisovia
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AvisoViagemRepository extends JpaRepository<AvisoViagem, Long> {
+public interface AvisoViagemRepository extends JpaRepository<Avisos, Long> {
 }

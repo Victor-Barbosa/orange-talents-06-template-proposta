@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-public class AvisoViagem {
+public class Avisos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,23 +19,23 @@ public class AvisoViagem {
     @Column(nullable = false)
     private String destino;
     @Column(nullable = false)
-    private LocalDate terminoViagem;
+    private LocalDate validoAte;
     @Column(nullable = false)
     private LocalDateTime instanteDoAviso = LocalDateTime.now();
     @ManyToOne
     private Cartao cartao;
 
-    public AvisoViagem(Cartao cartao, String ip, String userAgent, String destino, LocalDate terminoViagem) {
+    public Avisos(Cartao cartao, String ip, String userAgent, String destino, LocalDate validoAte) {
 
         this.cartao = cartao;
         this.ip = ip;
         this.userAgent = userAgent;
         this.destino = destino;
-        this.terminoViagem = terminoViagem;
+        this.validoAte = validoAte;
     }
 
     @Deprecated
-    public AvisoViagem() {
+    public Avisos() {
 
     }
 }
